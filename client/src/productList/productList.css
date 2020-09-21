@@ -1,0 +1,14 @@
+.container-product-table {
+    max-width: 1020px !important;
+    padding: 0 9px !important;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 576px) {
+    .product-col {
+        margin: auto;
+    }
+}

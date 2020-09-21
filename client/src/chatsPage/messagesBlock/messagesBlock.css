@@ -1,0 +1,22 @@
+.messages {
+    overflow: auto;
+    bottom: 38px;
+    position: absolute;
+    top: 55px;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #ffffff82;
+}
+
+.messages::-webkit-scrollbar {
+	width: 5px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+	background: #888; 
+	border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}

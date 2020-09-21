@@ -1,0 +1,44 @@
+.person-info-table {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 15px rgba(121, 121, 121, 0.0527344);
+    min-height: 74vh;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.person-info-table > .wrapper-photo > .user-photo {
+    border: 2.7px solid #349A89;
+}
+
+.person-info-table-full-name {
+    font-family: Rubik;
+    font-size: 25px;
+}
+
+.work-lists-container {
+    padding-bottom: 10px;
+    text-align: center;
+    left: 22px;
+    top: 40px;
+}
+
+.work-list {
+    font-family: Rubik;
+    font-weight: bold;
+    font-size: 17px;
+    padding-top: 10px;
+    border: 1.3px solid #EEEFF1;
+    display: inline-block;
+    width: 164px;
+    height: 75px;
+}
+
+.work-list.selected {
+    background-color: #349A89;
+    color: #FFFFFF;
+}
+
+.name-list {
+    font-family: Rubik;
+    display: block;
+}

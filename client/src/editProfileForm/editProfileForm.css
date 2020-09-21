@@ -1,0 +1,54 @@
+.edit-profile-form {
+	max-width: 475px !important;
+	background-color: #FFFFFF;
+	margin: auto;
+	margin-top: 32px;
+	padding-bottom: 15px;
+	border-radius: 6px;
+	box-shadow: 0px 7px 5px 6px rgba(223, 223, 223, 0.2);
+}
+
+.header-edit-profile-form {
+	padding-top: 10px;
+	text-align: center;
+}
+
+.edit-profile-form input {
+	height: 50px;
+	border-radius: 5px;
+	border: 1px solid #E5E5E7;
+}
+
+.wrapper-photo {
+	text-align: center;
+}
+
+.user-photo {
+	margin-top: 15px;
+	width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+	border-radius: 100%;
+}
+
+.edit-profile-initials {
+	padding-top: 32px;
+    font-size: 150%;
+}
+
+.edit-profile-user-initials-background {
+	position: relative;
+	width: 100px; 
+    height: 100px;	
+	border-radius: 100%;
+	background-color: #F1C40F;
+	margin: auto;
+}
+
+.edit-profile-user-initials-background, .user-photo:hover {
+	cursor: pointer;
+}
+
+.upgrate-photo-btn {
+	display: none;
+}

@@ -1,0 +1,41 @@
+.chats-page-container {
+	padding: 0 !important;
+	position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+    bottom: 0;
+}
+
+.chats-wrapper {
+	display: inline-block;
+	border-right: 1px solid #d4d4d4;
+	padding: 0 !important;
+	height: 100%;
+}
+
+.correspondence-wrapper {
+    display: inline-block;
+    padding: 0 !important;
+    position: absolute !important;
+    height: 100%;
+}
+
+@media (max-width: 576px) {
+	.not-display {
+		display: none;
+	}
+}
+
+.chats-wrapper::-webkit-scrollbar {
+	width: 5px;
+}
+ 
+.chats-wrapper::-webkit-scrollbar-thumb {
+	background: #888; 
+	border-radius: 10px;
+}
+
+.chats-wrapper::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}

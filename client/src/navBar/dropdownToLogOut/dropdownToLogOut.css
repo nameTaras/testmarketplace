@@ -1,0 +1,48 @@
+.user-photo-navbar {
+	border-radius: 50%;
+    height: 40px;
+	width: 40px;
+	object-fit: cover;
+	position: absolute;
+	top: 8px;
+    left: 8px;
+}
+
+.user-photo-block {
+	display: inline-block;
+}
+
+.user-photo-dropdown {
+	object-fit: cover;
+	border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.user-initials-background {
+	border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    background-color: #F1C40F;
+}
+
+.initials-dropdown {
+    margin-top: 9px;
+}
+
+.full-name {
+	position: relative;
+	display: inline-block;
+	font-size: 70%;
+	top: 8px;
+}
+
+.button-edit-profile {
+	display: block;
+}
+
+.btn-edit-profile, .btn-logout {
+	display: block;
+}

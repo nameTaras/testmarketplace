@@ -1,0 +1,85 @@
+.chat-item {
+	border-left: 4px solid #ffffff00;
+	height: 100px;
+	border-bottom: 1px solid #d4d4d4;
+	position: relative;
+}
+
+.chat-item > p, .chat-item-selected > p {
+	margin: 0 0 0 40px;
+}
+
+.chat-item-selected {
+	border-left: 4px solid #349A89;
+	height: 100px;
+	border-bottom: 1px solid #d4d4d4;
+	position: relative;
+}
+
+@media (max-width: 576px) {
+	.chat-item-selected {
+		border-left: 0 solid #349A89;
+		height: 100px;
+		border-bottom: 1px solid #d4d4d4;
+		position: relative;
+	}
+}
+
+.chat-item-product-price, .chat-item-product-title, .chat-item-user-last-msg, .chat-item-user-full-name {
+	overflow: hidden;
+	height: 25px;
+}
+
+.chat-item-user-last-msg {
+	margin-left: 3px;
+}
+
+.chat-item-user-full-name, .chat-item-last-msg-time {
+	margin-top: 15px;
+}
+
+.chat-item-last-msg-time {
+	text-align: center;
+}
+
+.chat-item-user-last-msg-block {
+	overflow: hidden;
+	position: relative;
+	height: 25px;
+}
+
+.chat-item-correspondence-info, .chat-item-product-info {
+	border-right: 1px solid #d4d4d4;
+	overflow: hidden;
+}
+
+.chat-item-last-msg-info {
+	overflow: hidden;
+}
+
+.unread-message-true {
+	background-color: rgba(84, 166, 253, 0.63);
+    color: #f8f8f8;
+	border-radius: 50px;
+	text-align: center;
+	margin: auto;
+	height: 23px;
+    width: 23px;
+}
+
+.chat-item-product-image {
+    width: 70px;
+    height: 63px;
+    object-fit: cover;
+    margin: 18px 10px;
+}
+
+.unread-message-false {
+	display: none;
+}
+
+.chat-item-product-title-and-price {
+    position: absolute;
+    display: inline-block;
+	top: 15px;
+}

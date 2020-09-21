@@ -1,0 +1,73 @@
+.add-product-form-container {
+	height: 690px;
+	background-color: #FFFFFF;
+	margin: auto;
+	margin-top: 32px;
+	border-radius: 6px;
+	box-shadow: 0px 7px 5px 6px rgba(223, 223, 223, 0.2);
+}
+
+.header-add-product-form {
+	padding-top: 10px;
+}
+
+.header-add-product-form {
+	text-align: center;
+}
+
+.add-product-form-description {
+	resize: none;
+}
+
+#input-file {
+	width: 0;
+    height: 0;
+}
+
+.input-file-container {
+	overflow: auto;
+    overflow-y: hidden;
+    display: flex;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+}
+
+.input-file-container::-webkit-scrollbar {
+	height: 5px
+}
+
+.input-file-container::-webkit-scrollbar-thumb {
+	background: #888; 
+	border-radius: 10px;
+}
+
+.input-file-container::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}
+
+.input-file-label {
+	margin: 15px 10px;
+    height: 68px;
+    color: white;
+    border-radius: 3px;
+    background-color: cornflowerblue;
+    padding: 0 4px;
+}
+
+.input-file-img {
+	height: 89px;
+    margin: 5px 5px 5px 0px;
+}
+
+.close-img {
+    width: 20px;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+@media (min-width: 992px) {
+	.add-product-form-container {
+		max-width: 720px !important;
+	}
+}

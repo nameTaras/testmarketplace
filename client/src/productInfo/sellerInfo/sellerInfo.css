@@ -1,0 +1,69 @@
+.seller-wrapper {
+	position: relative;
+}
+
+.seller-info {
+	background: #FFFFFF;
+	border: 1px solid #EBEBEC;
+	border-radius: 5px;
+	height: 140px;
+}
+
+.seller-full-name {
+	text-align: center;
+}
+
+.user-photo-wrapper {
+	height: 49px;
+	background-color: #349A89;
+	border-radius: 5px 5px 0 0;
+	text-align: center;
+	margin-bottom: 63px;
+	position: relative;
+}
+
+.seller-location {
+	color: #AFAFAF;
+}
+
+button.chat-btn {
+	height: 45px;
+	width: 100%;
+	border-radius: 5px;
+	border: none;
+	background-color: #349A89;
+	display: block;
+	margin-top: 10px;
+}
+
+button.saved-btn {
+	color: #000;
+	height: 45px;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #67B3A6;
+	background-color: #FFFFFF;
+	display: block;
+	margin-top: 10px;
+}
+
+.save-product-icon {
+	position: absolute;
+	width: 20px;
+	margin-left: 9px;
+	bottom: 12px;
+	left: 20px;
+}
+
+.product-owner-initials-background {
+    background-color: #F1C40F;
+    padding-top: 32px;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    border-radius: 100%;
+}
+
+.owner-initials {
+	font-size: 150%;
+}

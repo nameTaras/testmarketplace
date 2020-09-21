@@ -1,0 +1,68 @@
+.navbar {
+	height: 80px;
+	background-image: linear-gradient(#090810, #100D23);
+	color: #fff;
+}
+
+.logo {
+	width: 90px;
+}
+
+.login-button {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.chats-icon {
+	margin-top: 9px;
+}
+
+.chats-btn {
+	position: relative;
+}
+
+.save-icon {
+	width: 20px;
+	margin-top: 9px; 
+}
+
+.unread-message-icon {
+	display: none;	
+	position: absolute;
+    left: 12px;
+    top: 1px;
+}
+
+.unread-message-icon-true {
+	position: absolute;
+	left: 19px;
+    top: 12px;
+}
+
+.dropdown-toggle.btn.btn-success {
+    background-color: #F1C40F;
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+}
+
+.dropdown-toggle::before {
+    display: none !important;
+}
+
+.dropdown-toggle.btn.btn-success:active {
+	background-color: #F1C40F !important;
+}
+
+.dropdown-item:active {
+    background-color: transparent !important;
+}
+
+.dropdown-item.nav-link.saved-list-icon:hover {
+	background-color: transparent;
+}
+
+.dropdown-item.nav-link.saved-list-icon:focus {
+	background-color: transparent;
+}

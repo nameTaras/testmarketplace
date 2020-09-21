@@ -1,0 +1,49 @@
+.message-item {
+    display: inline-table;
+}
+
+.message-item > p {
+    display: inline-block;
+    background-color: #dee2e6;
+    border-radius: 10px 10px 10px 0px;
+    padding: 6px;
+    max-width: 350px;
+    word-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+    .message-item > p {
+        max-width: 290px;
+    }
+}
+
+@media (max-width: 768px) {
+    .message-item > p {
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 576px) {
+    .message-item > p {
+        max-width: 260px;
+    }
+}
+
+.own-message {
+    float: right;
+    border-radius: 10px 10px 0px 10px !important;
+    background-color: #228dffc2 !important;
+    color: #fff;
+}
+
+.own-message-time {
+    float: right;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.guest-message-time {
+    float: left;
+    font-size: 10px;
+    margin-top: 10px;
+}
