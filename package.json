@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "cd server && npm install",
-    "build": "cd client && npm run build",
+    "build": "webpack",
     "start": "cd server && npm run start"
   },
   "repository": {
