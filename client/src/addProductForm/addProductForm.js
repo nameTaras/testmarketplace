@@ -48,11 +48,6 @@ class AddProductForm extends React.Component {
 					if (countPhotos === 7) break;
 				};
 
-				// if (this.state.photos.length === 6) {
-				// 	this.setState({ warnMore6Photo: true });
-				// 	break;
-				// }
-
 				let reader = new FileReader();
 				reader.readAsDataURL(photo);
 				reader.onload = () => {

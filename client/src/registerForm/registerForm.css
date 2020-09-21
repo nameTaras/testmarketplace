@@ -40,3 +40,8 @@
 	vertical-align: middle;
 	width: 401px;
 }
+
+.already-registered p a {
+	color: #007bff !important;
+    text-decoration: underline;
+}

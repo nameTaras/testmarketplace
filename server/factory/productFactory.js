@@ -89,7 +89,7 @@ async function addProduct(req, res) {
     !product.description && (delete product.description);
     !product.price && (delete product.price);
 
-    if (product.photos.length > 0) {
+    if (product.photos && product.photos.length > 0) {
         refreshToken(appCollection);
         try {
             const productsPhoto = 
