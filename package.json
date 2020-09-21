@@ -1,0 +1,22 @@
+{
+  "name": "marketplace",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server && npm install",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nameTaras/testmarketplace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nameTaras/testmarketplace/issues"
+  },
+  "homepage": "https://github.com/nameTaras/testmarketplace#readme"
+}
