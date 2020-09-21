@@ -67,7 +67,9 @@
     "url-loader": "2.3.0",
     "webpack-dev-server": "3.11.0",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "4.3.1",
+    "webpack": "4.42.0",
+    "webpack-cli": "3.3.12"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -153,8 +155,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "7.10.5",
-    "babel-plugin-styled-components": "1.11.1",
-    "webpack": "4.42.0",
-    "webpack-cli": "3.3.12"
+    "babel-plugin-styled-components": "1.11.1"
   }
 }
