@@ -6,9 +6,10 @@ const bodyParser = require("body-parser");
 const router = require("node-async-router")();
 const MongoClient = require("mongodb").MongoClient;
 
-const { AuthorizeAppToGoogleDrive } = require("./googleDriveApi/authorizeApp.js");
+// const { AuthorizeAppToGoogleDrive } = require("./googleDriveApi/authorizeApp.js");
 
 const Authentication = require("./authentication.js");
+const AppRouter = require("./routes/appRouter.js");
 const ProductsRouter = require("./routes/productRouter.js");
 const UsersRouter = require("./routes/userRouter.js");
 const ChatsRouter = require("./routes/chatRouter.js");
@@ -18,7 +19,7 @@ const app = express();
 const server = require('http').Server(app);
 //const env = process.env;
 
-app.use(express.static(__dirname + "/../build"));
+app.use(express.static(__dirname + "/../client/dist"));
 //app.use(express.static(__dirname + `/../config.client.${env}.js`));
 
 app.use((req, res, next) => {
@@ -33,13 +34,19 @@ app.use((req, res, next) => {
 
 const uridbMarketplace = Config.uriMongodb;
 const port = Config.PORT;
-const mongoClient = new MongoClient(uridbMarketplace, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoClient = new MongoClient(
+	uridbMarketplace,
+	{ 
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	}
+);
 let dbClient = null;
 mongoClient.connect((err, client) => {
 	if (err) return console.log(err);
 	server.listen(port);
 	dbClient = client;
-	AuthorizeAppToGoogleDrive(dbClient);
+	//AuthorizeAppToGoogleDrive(dbClient);
 });
 
 app.use((req, res, next) => {
@@ -64,6 +71,7 @@ app.use((req, res, next) => {
 
 Authentication(app, passport);
 
+AppRouter(router);
 UsersRouter(router, passport);
 ProductsRouter(router);
 ChatsRouter(router);

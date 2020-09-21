@@ -17,18 +17,34 @@ const googleDriveConfig = {
 }
 
 async function setTokenExpiry_date(appCollection) {
+    let app = null;
     try {
-        await appCollection.findOneAndUpdate(
-            {},
-            {
-                $set: {
-                    googleDriveRefreshToken: {
-                        refreshToken: googleDriveConfig.refreshToken,
-                        expiry_date: googleDriveConfig.tokenExpiry_date
+        app = await appCollection.findOne({});
+    } catch (error) {
+        console.log(error);
+    }
+
+    try {
+        if (app) {
+            await appCollection.findOneAndUpdate(
+                {},
+                {
+                    $set: {
+                        googleDriveRefreshToken: {
+                            refreshToken: googleDriveConfig.refreshToken,
+                            expiry_date: googleDriveConfig.tokenExpiry_date
+                        }
                     }
                 }
-            }
-        );
+            );
+        } else {
+            await appCollection.insertOne({
+                googleDriveRefreshToken: {
+                    refreshToken: googleDriveConfig.refreshToken,
+                    expiry_date: googleDriveConfig.tokenExpiry_date
+                }
+            });
+        }
     } catch (err) {
         console.log(err);
     }
@@ -57,7 +73,7 @@ async function refreshToken(appCollection) {
 
 module.exports.refreshToken = refreshToken;
 
-module.exports.AuthorizeAppToGoogleDrive = async function (dbClient) {
+module.exports.AuthorizeAppToGoogleDrive = async function (dbClient, tokens, oAuth2Client) {
     const db = dbClient.db("marketplaceApp");
     const appCollection = db.collection("app");
 
@@ -69,7 +85,7 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient) {
     }
 
     try {
-        const tokens = await SetCode(oAuth2Client);
+        //const tokens = await SetCode(oAuth2Client);
         googleDriveConfig.tokenExpiry_date = tokens.expiry_date;
         googleDriveConfig.refreshToken = tokens.refresh_token;
         oAuth2Client.setCredentials(tokens);
@@ -125,8 +141,10 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient) {
 
     let areFoldersIdEquivalent = null;
     if (isNumberOfGoogleFoldersCorrect && isMatchNumberOfFoldersIdInMongodbCorrect) {
-        areFoldersIdEquivalent = allFolders.every(folder => Object.values(app.googleDriveFolders).includes(folder.id));
-
+        areFoldersIdEquivalent = allFolders.every(folder => 
+            Object.values(app.googleDriveFolders).includes(folder.id)
+        );
+        
         if (areFoldersIdEquivalent) return;
     }
 
@@ -194,4 +212,6 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient) {
     await GoogleDriveApi.deleteFile(rootFolder.id);
 
     await GoogleDriveApi.deleteTrashedFiles();
+    
+    return { authorized: true }
 }
