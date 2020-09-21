@@ -25,7 +25,7 @@ class PersonInfoTable extends React.Component {
 
         await products.getProducts({ ownerId: user._id });
         this.setState({ isLoaded: true });
-        await liked.getLikedProducts();
+        liked.getLikedProducts();
     }
 
     componentDidMount() {

@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
 			if (this.state[item]) filter[item] = this.state[item]
 		}
 		await products.getProducts(filter);
-		await liked.getLikedProducts();
+		liked.getLikedProducts();
 	}
 
 	render() {
