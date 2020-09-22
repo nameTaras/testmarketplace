@@ -26,7 +26,7 @@ async function setTokenExpiry_date(appCollection, expiry_date, refresh_token) {
                 {
                     $set: {
                         googleDriveRefreshToken: {
-                            refreshToken,
+                            refresh_token,
                             expiry_date
                         }
                     }
@@ -35,7 +35,7 @@ async function setTokenExpiry_date(appCollection, expiry_date, refresh_token) {
         } else {
             await appCollection.insertOne({
                 googleDriveRefreshToken: {
-                    refreshToken,
+                    refresh_token,
                     expiry_date
                 }
             });
