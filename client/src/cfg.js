@@ -1,5 +1,5 @@
 const Config = {
-    env: (env = "dev") => {
+    env: (env) => {
         return {
             hostWithApi: (function () {
                 if (env === "dev") {

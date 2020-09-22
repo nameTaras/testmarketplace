@@ -1,8 +1,8 @@
 const { google } = require('googleapis');
 const querystring = require('querystring');
-const SetCode = require("./setGoogleToken.js");
 const GoogleDriveApi = require("./api.js");
 const Config = require("../../config/config.server.js");
+const { Console } = require('console');
 
 const { client_secret, client_id, redirect_uris } = Config.googleDriveCredentials;
 const oAuth2Client = new google.auth.OAuth2(
@@ -11,12 +11,7 @@ const oAuth2Client = new google.auth.OAuth2(
     redirect_uris[0]
 );
 
-const googleDriveConfig = {
-    tokenExpiry_date: null,
-    refreshToken: null
-}
-
-async function setTokenExpiry_date(appCollection) {
+async function setTokenExpiry_date(appCollection, expiry_date, refresh_token) {
     let app = null;
     try {
         app = await appCollection.findOne({});
@@ -31,8 +26,8 @@ async function setTokenExpiry_date(appCollection) {
                 {
                     $set: {
                         googleDriveRefreshToken: {
-                            refreshToken: googleDriveConfig.refreshToken,
-                            expiry_date: googleDriveConfig.tokenExpiry_date
+                            refreshToken: refreshToken,
+                            expiry_date: tokenExpiry_date
                         }
                     }
                 }
@@ -40,8 +35,8 @@ async function setTokenExpiry_date(appCollection) {
         } else {
             await appCollection.insertOne({
                 googleDriveRefreshToken: {
-                    refreshToken: googleDriveConfig.refreshToken,
-                    expiry_date: googleDriveConfig.tokenExpiry_date
+                    refreshToken: refreshToken,
+                    expiry_date: tokenExpiry_date
                 }
             });
         }
@@ -51,20 +46,25 @@ async function setTokenExpiry_date(appCollection) {
 }
 
 async function refreshToken(appCollection) {
-    const expiry_date = googleDriveConfig.tokenExpiry_date;
+    let app = null;
+    try {
+        app = await appCollection.findOne({});
+    } catch (err) {
+        console.log(err);
+    }
+
+    const expiry_date = app.googleDriveRefreshToken.expiry_date;
     const atThisMoment = Date.now();
 
     if (atThisMoment > expiry_date) {
         try {
             const { res, tokens } = 
-                await oAuth2Client.refreshToken(googleDriveConfig.refreshToken);
+                await oAuth2Client.refreshToken(refreshToken);
             const { refresh_token } = querystring.parse(res.config.data);
 
-            googleDriveConfig.tokenExpiry_date = tokens.expiry_date;
-            googleDriveConfig.refreshToken = refresh_token;
             oAuth2Client.setCredentials(tokens);
             google.options({ auth: oAuth2Client });
-            setTokenExpiry_date(appCollection);
+            setTokenExpiry_date(appCollection, tokens.expiry_date, refresh_token);
         } catch (err) {
             console.log(err);
         }
@@ -84,18 +84,11 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient, tokens, oAu
         console.log(err);
     }
 
-    try {
-        //const tokens = await SetCode(oAuth2Client);
-        googleDriveConfig.tokenExpiry_date = tokens.expiry_date;
-        googleDriveConfig.refreshToken = tokens.refresh_token;
-        oAuth2Client.setCredentials(tokens);
-        google.options({ auth: oAuth2Client });
-    } catch (err) {
-        console.log(err);
-    }
+    oAuth2Client.setCredentials(tokens);
+    google.options({ auth: oAuth2Client });
 
     try {
-        await setTokenExpiry_date(appCollection);
+        await setTokenExpiry_date(appCollection, tokens.expiry_date, tokens.refresh_token);
     } catch (error) {
         console.log(error);
     }
@@ -190,7 +183,7 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient, tokens, oAu
         console.log(err);
     }
 
-    if (childrenFolders.length) {
+    if (childrenFolders) {
         for (let folder of childrenFolders) {
             const resFolderFiles = await GoogleDriveApi.listFiles(
                 {

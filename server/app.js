@@ -6,8 +6,6 @@ const bodyParser = require("body-parser");
 const router = require("node-async-router")();
 const MongoClient = require("mongodb").MongoClient;
 
-// const { AuthorizeAppToGoogleDrive } = require("./googleDriveApi/authorizeApp.js");
-
 const Authentication = require("./authentication.js");
 const AppRouter = require("./routes/appRouter.js");
 const ProductsRouter = require("./routes/productRouter.js");
@@ -18,13 +16,13 @@ const Config = require("../config/config.server.js");
 const app = express();
 const server = require('http').Server(app);
 
-app.use(express.static(__dirname + "/../client/dist"));
+app.use(express.static(__dirname + "/../build"));
 
 app.use((req, res, next) => {
 	const noApiInPath = /^(?!\/?api).+$/.test(req.path);
 
 	if (noApiInPath) {
-		res.sendFile("index.html", { root: __dirname + "/../client/dist" });
+		res.sendFile("index.html", { root: __dirname + "/../build" });
 	} else {
 		next();
 	}
@@ -44,7 +42,6 @@ mongoClient.connect((err, client) => {
 	if (err) return console.log(err);
 	server.listen(port);
 	dbClient = client;
-	//AuthorizeAppToGoogleDrive(dbClient);
 });
 
 app.use((req, res, next) => {
