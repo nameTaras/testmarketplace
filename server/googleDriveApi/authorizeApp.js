@@ -54,12 +54,13 @@ async function refreshToken(appCollection) {
     }
 
     const expiry_date = app.googleDriveRefreshToken.expiry_date;
+    const refresh_token = app.googleDriveRefreshToken.refresh_token;
     const atThisMoment = Date.now();
 
     if (atThisMoment > expiry_date) {
         try {
             const { res, tokens } = 
-                await oAuth2Client.refreshToken(refreshToken);
+                await oAuth2Client.refreshToken(refresh_token);
             const { refresh_token } = querystring.parse(res.config.data);
 
             oAuth2Client.setCredentials(tokens);
