@@ -65,7 +65,7 @@ async function editProfile(req, res) {
 	}
 
 	if (user.userPhoto) {
-		refreshToken(appCollection);
+		await refreshToken(appCollection);
 		const oldUserPhoto = req.user.userPhoto;
 		if (oldUserPhoto) {
 			try {
@@ -107,7 +107,7 @@ async function editProfile(req, res) {
 			);
 			const user = updatedItem.value;
 			if (user.userPhoto) {
-				refreshToken(appCollection);
+				await refreshToken(appCollection);
 				try {
 					const response = await GoogleDriveApi.getFile(user.userPhoto);
 					user.userPhoto = response.data;
@@ -164,7 +164,7 @@ async function getUser(req, res) {
 	}
 
 	if (user.userPhoto) {
-		refreshToken(appCollection);
+		await refreshToken(appCollection);
 		try {
 			const response = await GoogleDriveApi.getFile(user.userPhoto);
 			user.userPhoto = response.data;

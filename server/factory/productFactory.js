@@ -40,7 +40,7 @@ async function getProducts(req, res) {
 
     for (let product of products) {
         if (product.photos) {
-            refreshToken(appCollection);
+            await refreshToken(appCollection);
             try {
                 const response = await GoogleDriveApi.getFile(product.photos);
                 product.photos = response.data;
@@ -89,8 +89,8 @@ async function addProduct(req, res) {
     !product.description && (delete product.description);
     !product.price && (delete product.price);
 
-    if (product.photos && product.photos.length > 0) {
-        refreshToken(appCollection);
+    if (product.photos) {
+        await refreshToken(appCollection);
         try {
             const productsPhoto = 
                 Config.environment === "development"? "testProductsPhoto" : "productsPhoto";
@@ -129,7 +129,7 @@ async function getProduct(req, res) {
     }
 
     if (product.photos) {
-        refreshToken(appCollection);
+        await refreshToken(appCollection);
         try {
             const response = await GoogleDriveApi.getFile(product.photos);
             product.photos = response.data;
@@ -212,7 +212,7 @@ async function getLikedProducts(req, res) {
 
         for (let product of likedProducts) {
             if (product.photos) {
-                refreshToken(appCollection);
+                await refreshToken(appCollection);
                 try {
                     const response = await GoogleDriveApi.getFile(product.photos);
                     product.photos = response.data;
