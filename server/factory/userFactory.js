@@ -84,7 +84,6 @@ async function editProfile(req, res) {
 				user.userPhoto
 			);
 			user.userPhoto = response.data.id;
-			console.log("status____", response.status);
 		} catch (err) {
 			console.log(err);
 		}
