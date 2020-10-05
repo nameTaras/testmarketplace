@@ -1,6 +1,5 @@
 # How to run the app
 
-```bash
 1. git clone https://github.com/nameTaras/testmarketplace.git
 2. Run `npm install` in client and server folder
 3. Run `npm run watch` in client folder for work with the client in real time
@@ -10,4 +9,6 @@
     mail: shchurtestmail@gmail.com
     password: Shchurtestmail11
 7. Make request with code which you got "http://localhost:3001/api/setGoogleDriveToken?code="
-```
+
+
+[https://testmarketplace.herokuapp.com](https://testmarketplace.herokuapp.com/)

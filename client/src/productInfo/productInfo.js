@@ -23,7 +23,7 @@ class ProductInfo extends React.Component {
 		this.onLeft = this.onLeft.bind(this);
 	}
 
-	onLeft(photoNumber) {		
+	onLeft(photoNumber) {
 		photoNumber--;
 		if (photoNumber < 0) return;
 		this.setState({ photoNumber });
@@ -63,23 +63,23 @@ class ProductInfo extends React.Component {
 					<Col lg="1"></Col>
 					<Col lg="7" md="7" sm="12" xs="12">
 						<div className="product-info">
-							<img
+							{photos && <img
 								className="to-left-button"
 								src={TO_LEFT}
 								onClick={() => this.onLeft(photoNumber)}
 								alt="to-left"
-							/>
+							/>}
 							<img
-								src={photos[photoNumber] || NO_PHOTO_AVAILABLE}
+								src={photos ? photos[photoNumber] : NO_PHOTO_AVAILABLE}
 								alt={title}
 								className="product-image"
 							/>
-							<img
+							{photos && <img
 								className="to-right-button"
 								src={TO_LEFT}
 								onClick={() => this.onRight(photoNumber)}
 								alt="to-right"
-							/>
+							/>}
 							<div className="product-info-price">{price}</div>
 							<h3 className="product-name-date">{title}</h3>
 							<h4 className="product-location">{location}</h4>

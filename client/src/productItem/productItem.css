@@ -14,7 +14,7 @@
 
 .product-image-block {
 	max-width: 205px;
-	max-height: 148px;
+	height: 148px;
 	overflow: hidden;
 }
 

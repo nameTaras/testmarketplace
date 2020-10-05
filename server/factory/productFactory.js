@@ -99,7 +99,11 @@ async function addProduct(req, res) {
                 [app.googleDriveFolders[productsPhoto]],
                 product.photos
             );
-            product.photos = response.data.id;
+            if (response) { 
+                product.photos = response.data.id;
+            } else {
+                delete product.photos;
+            }
         } catch (err) {
             console.log(err);
         }

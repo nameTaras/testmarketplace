@@ -2,7 +2,6 @@ const { google } = require('googleapis');
 const querystring = require('querystring');
 const GoogleDriveApi = require("./api.js");
 const Config = require("../../config/config.server.js");
-const { Console } = require('console');
 
 const { client_secret, client_id, redirect_uris } = Config.googleDriveCredentials;
 const oAuth2Client = new google.auth.OAuth2(
@@ -202,7 +201,7 @@ module.exports.AuthorizeAppToGoogleDrive = async function (dbClient, tokens, oAu
         }
     }
 
-    await GoogleDriveApi.deleteFile(rootFolder.id);
+    if (rootFolder) await GoogleDriveApi.deleteFile(rootFolder.id);
 
     await GoogleDriveApi.deleteTrashedFiles();
     

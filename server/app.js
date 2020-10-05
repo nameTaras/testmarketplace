@@ -7,6 +7,7 @@ const router = require("node-async-router")();
 const MongoClient = require("mongodb").MongoClient;
 
 const Authentication = require("./authentication.js");
+const Socketio = require("./socketio.js");
 const AppRouter = require("./routes/appRouter.js");
 const ProductsRouter = require("./routes/productRouter.js");
 const UsersRouter = require("./routes/userRouter.js");
@@ -71,17 +72,19 @@ UsersRouter(router, passport);
 ProductsRouter(router);
 ChatsRouter(router);
 
-const io = require('socket.io')(server);
+Socketio(server);
 
-io.on('connection', socket => {
-	socket.on('message', (msg, chatId, productId) => {
-		socket.broadcast.emit('messageToClients', msg, chatId, productId);
-	});
+// const io = require('socket.io')(server);
 
-	socket.on('disconnect', () => {
-		console.log(`Client with id ${socket.id} disconnected`);
-	});
-});
+// io.on('connection', socket => {
+// 	socket.on('message', (msg, chatId, productId) => {
+// 		socket.broadcast.emit('messageToClients', msg, chatId, productId);
+// 	});
+
+// 	socket.on('disconnect', () => {
+// 		console.log(`Client with id ${socket.id} disconnected`);
+// 	});
+// });
 
 app.use(router);
 
