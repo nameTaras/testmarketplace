@@ -29,7 +29,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log("process.env___", process.env);
         const { products } = this.props.store;
         const displayedProducts = products.list.toJSON();
 
