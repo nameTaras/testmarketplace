@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Container } from 'react-bootstrap';
 import { inject } from "mobx-react";
-import Cfg from "../cfg.js";
+import Config from "../config.js";
 import "./registerForm.css";
 
 @inject("store")
@@ -49,7 +49,7 @@ class RegisterForm extends React.Component {
 		const { signed } = await responseSignUp.json();
 
 		if (signed) {
-			window.location.replace(Cfg.env().host);
+			window.location.replace(Config.host);
 		}
 	}
 

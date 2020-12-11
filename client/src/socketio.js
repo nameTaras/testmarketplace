@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
-import Cfg from "./cfg.js";
+import Config from "./config.js";
 
-const socket = io(Cfg.env().host);
+const socket = io(Config.host);
 
 socket.on('connect', () => {
     console.log('Successfully connected!');

@@ -1,4 +1,4 @@
-import Cfg from "./cfg.js";
+import Config from "./config.js";
 
 const Api = {
     getOptions: (method, contentType, body) => {
@@ -12,7 +12,7 @@ const Api = {
     },
 
     request: async function (endpoint, options) {
-        const url = Cfg.env().hostWithApi + endpoint;
+        const url = Config.hostWithApi + endpoint;
 
         let response = null;
         let responseData = null;

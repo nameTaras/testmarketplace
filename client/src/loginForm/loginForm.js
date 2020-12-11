@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Container } from 'react-bootstrap';
 import { inject } from "mobx-react";
-import Config from "../cfg.js";
+import Config from "../config.js";
 import "./loginForm.css";
 
 @inject("store")
@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
 			if (window.history.state.prevUrl) {
 				window.location.replace(window.history.state.prevUrl);
 			} else {
-				window.location.replace(Config.env().host);
+				window.location.replace(Config.host);
 			}
 		}
 	}

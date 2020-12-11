@@ -1,7 +1,7 @@
 import React from "react";
 import { inject } from "mobx-react";
 import { Form, Button, Container } from 'react-bootstrap';
-import Cfg from "../cfg.js";
+import Config from "../config.js";
 import "./editProfileForm.css";
 
 @inject("store")
@@ -34,7 +34,7 @@ class EditProfileForm extends React.Component {
 		const responseData = await response.json();
 
 		if (response.status === 200) {
-			window.location.replace(`${Cfg.env().host}/personInfo?userId=${responseData._id}`);
+			window.location.replace(`${Config.host}/personInfo?userId=${responseData._id}`);
 		}
 	}
 

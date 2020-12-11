@@ -5,7 +5,7 @@ import { ButtonToolbar, Button } from 'react-bootstrap';
 import SAVE_ICON from "../../icons/save-icon-black.svg";
 import SAVED_ICON from "../../icons/saved-icon.png";
 import ModalChatWindow from "./modalChatWindow/modalChatWindow.js"
-import Cfg from "../../cfg.js";
+import Config from "../../config.js";
 import "./sellerInfo.css";
 
 class SellerInfo extends React.Component {
@@ -60,7 +60,7 @@ class SellerInfo extends React.Component {
 			window.history.pushState({ 
 				prevUrl: window.location.href },
 				null,
-				`${Cfg.env().host}/logIn`
+				`${Config.host}/logIn`
 			);
 			window.history.go();
 		}

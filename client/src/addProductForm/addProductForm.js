@@ -1,7 +1,7 @@
 import React from "react";
 import { inject } from "mobx-react";
 import { Form, Button, Container } from 'react-bootstrap';
-import Cfg from "../cfg.js";
+import Config from "../config.js";
 import CLOSE_ICON from "../icons/close-icon.png";
 import "./addProductForm.css";
 
@@ -67,7 +67,7 @@ class AddProductForm extends React.Component {
 		const { _id } = await response.json();
 
 		if (response.status === 200) {
-			window.location.replace(`${Cfg.env().host}/productInfo?id=${_id}`);
+			window.location.replace(`${Config.host}/productInfo?id=${_id}`);
 		}
 	}
 

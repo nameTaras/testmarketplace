@@ -77,7 +77,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "watch": "webpack --config ./config/webpack.config.js --watch"
+    "watch": "webpack --env.NODE_ENV=development --config ./config/webpack.config.js --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
