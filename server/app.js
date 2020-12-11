@@ -16,14 +16,15 @@ const Config = require("../config/config.server.js");
 
 const app = express();
 const server = require('http').Server(app);
-
-app.use(express.static(__dirname + Config.staticPath));
+console.log("Config.staticPath____", Config.staticPath);
+console.log("Config.staticPath__typeof__", typeof Config.staticPath);
+app.use(express.static(__dirname + "/../build"));
 
 app.use((req, res, next) => {
 	const noApiInPath = /^(?!\/?api).+$/.test(req.path);
 
 	if (noApiInPath) {
-		res.sendFile("index.html", { root: __dirname + Config.staticPath });
+		res.sendFile("index.html", { root: __dirname + "/../build" });
 	} else {
 		next();
 	}
