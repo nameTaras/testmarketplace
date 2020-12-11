@@ -2,6 +2,7 @@ module.exports = {
     PORT: process.env.PORT || 3001,
     uriMongodb: process.env.uriMongodb || "mongodb://localhost:27017",
     environment: process.env.environment || "development",
+    staticPath: process.env.environment ? "/../build" : "/../client/dist",
     googleDriveFolders:
         process.env.googleDriveFolders || '["testFiles", "testProductsPhoto", "testUploadedFiles", "testUsersPhoto"]',
     googleDriveCredentials: {
